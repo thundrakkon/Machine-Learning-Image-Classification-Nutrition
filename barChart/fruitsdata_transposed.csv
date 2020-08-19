@@ -1,0 +1,22 @@
+Nutrient,Apple,Banana,Blueberries,Lemon,Mango,Orange,Peach,Persimmon,Strawberries,Tomatoes,Watermelon
+Calcium_Ca,6 MG,5 MG,6 MG,26 MG,11 MG,40 MG,6 MG,8 MG,16 MG,10 MG,7 MG
+Carbohydrate_by_difference,13.81 G,22.84 G,14.49 G,9.32 G,14.98 G,11.75 G,9.54 G,18.59 G,7.68 G,3.89 G,7.55 G
+Copper_Cu,0.027 MG,0.078 MG,0.057 MG,0.037 MG,0.111 MG,0.045 MG,0.068 MG,0.113 MG,0.048 MG,0.059 MG,0.042 MG
+Fatty_acids_total_monounsaturated,0.007 G,0.032 G,0.047 G,0.011 G,0.14 G,0.023 G,0.067 G,0.037 G,0.043 G,0.031 G,0.037 G
+Fatty_acids_total_polyunsaturated,0.051 G,0.073 G,0.146 G,0.089 G,0.071 G,0.025 G,0.086 G,0.043 G,0.155 G,0.083 G,0.05 G
+Fatty_acids_total_saturated,0.028 G,0.112 G,0.028 G,0.039 G,0.092 G,0.015 G,0.019 G,0.02 G,0.015 G,0.028 G,0.016 G
+Fiber_total_dietary,2.4 G,2.6 G,2.4 G,2.8 G,1.6 G,2.4 G,1.5 G,3.6 G,2 G,1.2 G,0.4 G
+Iron_Fe,0.12 MG,0.26 MG,0.28 MG,0.6 MG,0.16 MG,0.1 MG,0.25 MG,0.15 MG,0.41 MG,0.27 MG,0.24 MG
+Magnesium_Mg,5 MG,27 MG,6 MG,8 MG,10 MG,10 MG,9 MG,9 MG,13 MG,11 MG,10 MG
+Phosphorus_P,11 MG,22 MG,12 MG,16 MG,14 MG,14 MG,20 MG,17 MG,24 MG,24 MG,11 MG
+Potassium_K,107 MG,358 MG,77 MG,138 MG,168 MG,181 MG,190 MG,161 MG,153 MG,237 MG,112 MG
+Protein,0.26 G,1.09 G,0.74 G,1.1 G,0.82 G,0.94 G,0.91 G,0.58 G,0.67 G,0.88 G,0.61 G
+Sodium_Na,1 MG,1 MG,1 MG,2 MG,1 MG,0 MG,0 MG,1 MG,1 MG,5 MG,1 MG
+Sugars_total_including_NLEA,10.39 G,12.23 G,9.96 G,2.5 G,13.66 G,9.35 G,8.39 G,12.53 G,4.89 G,2.63 G,6.2 G
+Total_lipid_fat,0.17 G,0.33 G,0.33 G,0.3 G,0.38 G,0.12 G,0.25 G,0.19 G,0.3 G,0.2 G,0.15 G
+Vitamin_A_RAE,3 UG,3 UG,3 UG,1 UG,54 UG,11 UG,16 UG,81 UG,1 UG,42 UG,28 UG
+Vitamin_B_6,0.041 MG,0.367 MG,0.052 MG,0.08 MG,0.119 MG,0.06 MG,0.025 MG,0.1 MG,0.047 MG,0.08 MG,0.045 MG
+VitaminC_total_ascorbic_acid,4.6 MG,8.7 MG,9.7 MG,53 MG,36.4 MG,53.2 MG,6.6 MG,7.5 MG,58.8 MG,13.7 MG,8.1 MG
+VitaminE_alpha_tocopherol,0.18 MG,0.1 MG,0.57 MG,0.15 MG,0.9 MG,0.18 MG,0.73 MG,0.73 MG,0.29 MG,0.54 MG,0.05 MG
+VitaminK_phylloquinone,2.2 UG,0.5 UG,19.3 UG,0 UG,4.2 UG,0 UG,2.6 UG,2.6 UG,2.2 UG,7.9 UG,0.1 UG
+Zinc_Zn,0.04 MG,0.15 MG,0.16 MG,0.06 MG,0.09 MG,0.07 MG,0.17 MG,0.11 MG,0.14 MG,0.17 MG,0.1 MG
