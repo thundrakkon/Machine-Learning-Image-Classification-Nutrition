@@ -1,0 +1,16 @@
+,fruit_name,ID,Name,Number,Unit,Code,Description,Value
+0,APPLE,1004,Total lipid (fat),204,G,LCCD,Calculated from a daily value percentage per serving size measure,0.0
+1,APPLE,1087,"Calcium, Ca",301,MG,LCCD,Calculated from a daily value percentage per serving size measure,8.0
+2,APPLE,1089,"Iron, Fe",303,MG,LCCD,Calculated from a daily value percentage per serving size measure,0.15
+3,APPLE,1093,"Sodium, Na",307,MG,LCCD,Calculated from a daily value percentage per serving size measure,0.0
+4,APPLE,1104,"Vitamin A, IU",318,IU,LCCD,Calculated from a daily value percentage per serving size measure,41.0
+5,APPLE,1162,"Vitamin C, total ascorbic acid",401,MG,LCCD,Calculated from a daily value percentage per serving size measure,2.0
+6,APPLE,1253,Cholesterol,601,MG,LCCD,Calculated from a daily value percentage per serving size measure,0.0
+7,APPLE,1258,"Fatty acids, total saturated",606,G,LCCD,Calculated from a daily value percentage per serving size measure,0.0
+8,APPLE,1003,Protein,203,G,LCCS,Calculated from value per serving size measure,0.41
+9,APPLE,1005,"Carbohydrate, by difference",205,G,LCCS,Calculated from value per serving size measure,14.05
+10,APPLE,1008,Energy,208,KCAL,LCCS,Calculated from value per serving size measure,54.0
+11,APPLE,2000,"Sugars, total including NLEA",269,G,LCCS,Calculated from value per serving size measure,10.33
+12,APPLE,1079,"Fiber, total dietary",291,G,LCCS,Calculated from value per serving size measure,2.1
+13,APPLE,1092,"Potassium, K",306,MG,LCCS,Calculated from value per serving size measure,107.0
+14,APPLE,1257,"Fatty acids, total trans",605,G,LCCS,Calculated from value per serving size measure,0.0
