@@ -7,6 +7,8 @@ from PIL import ImageTk, Image
 import numpy
 import tensorflow as tf
 from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.models import Sequential
 
 #load the trained model to classify the images
 from keras.models import load_model
@@ -17,8 +19,15 @@ model = load_model('fruits_tensorflow.h5')
 classes = { 
     0:'apple',
     1:'banana',
-    2:'orange',
-    3:'persimmon'
+    2:'blueberry',
+    3:'lemon',
+    4:'mango',
+    5:'orange',
+    6:'peach',
+    7:'persimmon',
+    8:'strawberry',
+    9:'tomato',
+    10:'watermelon'
 }
 
 #initialise GUI
@@ -37,15 +46,20 @@ def classify(file_path):
     img_array = keras.preprocessing.image.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0) # Create a batch
 
+    # predict = model.predict(img_array)
     predictions = model.predict_classes(img_array)[0]
-    # score = tf.nn.softmax(predictions[0])
+    # score = tf.nn.softmax(predict[0])
+    # score = model.predict_proba(img_array)[0]
+    # score = model.evaluate(img_array)
+    score = model.predict(img_array)
 
-    # print(
-    #     "This image most likely belongs to {} with a {:.2f} percent confidence."
-    #     .format(class_names[np.argmax(score)], 100 * np.max(score))
-    # )
+    
     sign = classes[predictions]
-    print(sign)
+    print(
+        "This image most likely belongs to {} with a {:.2f} percent confidence."
+        .format(classes[numpy.argmax(score)], 100 * numpy.max(score))
+    )
+    # print(f'{sign}')
     label.configure(foreground='#011638', text=sign) 
 
 def show_classify_button(file_path):
