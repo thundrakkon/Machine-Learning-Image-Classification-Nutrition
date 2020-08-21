@@ -39,6 +39,11 @@ label=Label(top,background='#CDCDCD', font=('arial',15,'bold'))
 sign_image = Label(top)
 
 def classify(file_path):
+    
+    print("PRINT:*************************************************")
+    print(file_path)
+    print("PRINT:*************************************************")
+
     global label_packed
 
     img = keras.preprocessing.image.load_img(
