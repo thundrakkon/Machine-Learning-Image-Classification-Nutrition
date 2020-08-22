@@ -45,10 +45,10 @@
     <div class= row>
         <div class=col-sm-6>
             <a href="{{ url_for('index') }}">Have another favorite fruit?</a><p></p>
-            {% for file_url in file_urls %}
-                <img style="height: 150px" src="{{ data.file_urls }}">
+            {% for file_url in data.file_urls %}
+                <img style="height: 150px" src="{{ file_url }}">
             {% endfor %}
-            <p id=prediction>{{data.prediction[0]}}</p>
+
         
         </div>
         <div class=col-sm-6>
