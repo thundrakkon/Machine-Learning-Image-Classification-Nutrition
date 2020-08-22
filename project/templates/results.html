@@ -23,6 +23,7 @@
     <script type="text/javascript">
         var file_url ='{{ data.file_urls[0]}}'
         var prediction ='{{ data.prediction[0]}}'
+        var prediction_data = '{{ data.prediction_data[0]}}'
     </script>
     <script type="text/javascript" src="{{url_for('static', filename = 'resultsJs.js')}}"></script>
 </head>
@@ -244,8 +245,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-    <script type="text/javascript" src="{{url_for('static', filename = 'nutrients.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static', filename = 'results_details.json')}}"></script>
+    <!-- <script type="text/javascript" src="{{url_for('static', filename = 'nutrients.js')}}"></script> -->
+    <!-- <script type="text/javascript" src="{{url_for('static', filename = 'results_details.json')}}"></script> -->
     
 </body>
 </html>

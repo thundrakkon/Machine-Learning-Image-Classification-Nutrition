@@ -1,1 +1,1 @@
-console.log(prediction)
+console.log(prediction_data)
