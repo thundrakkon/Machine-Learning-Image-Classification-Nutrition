@@ -1,5 +1,7 @@
-
 var fruitsData = 'static/filtered_fruits.csv'
+// var elementsArray = document.getElementsByClassName('value');
+// var input = elementsArray[0];
+var input = 'apple'
 
 // console log all the data
 d3.csv(fruitsData).then(function(data){
@@ -23,17 +25,23 @@ dropdown()
 function buildChart(selected){
     
     d3.csv(fruitsData).then(function(data){
-        var fruits = ['Apple', 'Banana', 'Blueberries', 'Fig', 'Lemon', 'Orange', 'Peach', 'Persimmon_dried', 'Tomatoes', 'Watermelon']
+        var fruits = ['apple', 'banana', 'blueberries', 'fig', 'lemon', 'orange', 'peach', 'persimmon_dried', 'tomatoes', 'watermelon'];
 
-        var colors = ['lightsteelblue', 'lightsteelblue', 'lightsteelblue', 'lightsteelblue', 
-                        'lightsteelblue', 'lightsteelblue', 'lightsteelblue', 'lightsteelblue', 
-                        'lightsteelblue', 'lightsteelblue'];
-                        
+        var colors = ['mistyrose', 'mistyrose', 'mistyrose', 'mistyrose', 
+                        'mistyrose', 'mistyrose', 'mistyrose', 'mistyrose', 
+                        'mistyrose', 'mistyrose'];
+        
+        for (var j = 0; j < fruits.length; j++){
+            if (input == fruits[j]){
+                colors[j] = 'darkred';
+            }
+            // console.log(input, colors)
+        }
+                     
         for (var i = 0; i < data.length; i++){
             if (selected === data[i].Nutrient){
                 // console.log(selected);
                 
-                colors[i] = 'midnightblue';
                 // for (var j = 0; j < fruits.length; j++){
                 //     var yaxis = data[i].fruit[j]
                 // }
