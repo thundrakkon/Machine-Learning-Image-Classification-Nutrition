@@ -36,17 +36,17 @@
     </nav>
 
 
-    <div class="jumbotron">
-        <h1 class="display-4">So, you were looking for nutritional information for {{data.prediction[0]}}</h1>
-        <p class="lead">General understanding about nutrients as vitamins and fiber in fruits.</p>
+    <div class="jumbotron" style="background-image: url(https://www.pcycnsw.org.au/wp-content/uploads/2020/01/Eating-Healthy-Can-Be-Delicious.jpeg); background-size: 100% 100%;">
+        <h1 class="display-4" style="color: white; font-weight: bolder;">So, were you looking nutritional information about {{data.prediction[0]}} ?</h1>
+        <p class="lead"> </p>
         <hr class="my-4">
-        <p>These charts may let you think about what kind of fruit to eat based on your nutritional purpose.</p>
+        <p style="color: white; font-size: x-large;">General understanding about nutrients as vitamins of your choosen fruit or veggie will let you manage them to healthy purposes in you lifestyle.</p>
     </div>
 
 
 
     <div class= row>
-        <div class=col-sm-6>
+        <div class=col-sm-6 style="left: 125px;">
             <a href="{{ url_for('index') }}">Have another favorite fruit?</a><p></p>
             {% for file_url in data.file_urls %}
                 <img style="height: 150px" src="{{ file_url }}">
@@ -57,8 +57,8 @@
     </div>
     <div class=row>
     
-        <div class=col-sm-6 style="overflow-x: auto;">
-            <p id=nextToImage>TABLE OF NUTRIONAL FACTS</p>
+        <div class=col-sm-6 style="overflow-x: auto; left: 45px;">
+            <p id=nextToImage></p>
 
 
             <table id="table" border="1">
