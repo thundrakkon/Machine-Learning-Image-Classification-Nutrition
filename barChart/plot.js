@@ -1,4 +1,5 @@
-var fruitsData = '../project/static/fruits_filtered.csv'
+
+var fruitsData = 'static/filtered_fruits.csv'
 
 // console log all the data
 d3.csv(fruitsData).then(function(data){
@@ -20,34 +21,41 @@ dropdown()
 
 // BUILD CHART 
 function buildChart(selected){
+    
     d3.csv(fruitsData).then(function(data){
-        var fruits = ["Apple", "Banana", "Lemon", "Orange", "Date", "Grapes", "Cantaloupe", "Honeydew", "Watermelon", "Pear", "Pineapple", "Strawberries", "Tomatoes"]
+        var fruits = ['Apple', 'Banana', 'Blueberries', 'Fig', 'Lemon', 'Orange', 'Peach', 'Persimmon_dried', 'Tomatoes', 'Watermelon']
+
+        var colors = ['lightsteelblue', 'lightsteelblue', 'lightsteelblue', 'lightsteelblue', 
+                        'lightsteelblue', 'lightsteelblue', 'lightsteelblue', 'lightsteelblue', 
+                        'lightsteelblue', 'lightsteelblue'];
+                        
         for (var i = 0; i < data.length; i++){
             if (selected === data[i].Nutrient){
-                console.log(selected)
+                // console.log(selected);
                 
+                colors[i] = 'midnightblue';
                 // for (var j = 0; j < fruits.length; j++){
                 //     var yaxis = data[i].fruit[j]
                 // }
                 var yaxis = [data[i].Apple,
                             data[i].Banana,
+                            data[i].Blueberries,
+                            data[i].Fig,
                             data[i].Lemon,
                             data[i].Orange,
-                            data[i].Date,
-                            data[i].Grapes,
-                            data[i].Cantaloupe,
-                            data[i].HoneyDew,
-                            data[i].Watermelon,
-                            data[i].Pear,
-                            data[i].Pineapple,
-                            data[i].Strawberries,
-                            data[i].Tomatoes];
+                            data[i].Peach,
+                            data[i].Persimmon_dried,
+                            data[i].Tomatoes,
+                            data[i].Watermelon];
             } 
-            console.log(yaxis)
+            // console.log(yaxis)
         }
         var trace1 = {
             x: fruits,
             y: yaxis,
+            marker: {
+                color: colors
+            },
             type: 'bar',
             orientation: 'v'
         };
