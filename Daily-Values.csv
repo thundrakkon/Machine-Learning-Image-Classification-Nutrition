@@ -1,7 +1,5 @@
-Nutrient,Unit of measure,Measure_initial,Adults,"1Infants through 12
-months","Children 1 through 3
-years","Pregnant women
-and lactating women"
+Nutrient,Unit_of_measure,Measure_initial,"Adults
+? 4 years",Infants_1-12_months,Children_1_through_3_years,Pregnant_women_and_lactating_women
 Vitamin A,Micrograms RAE2 (mcg),mcg,900,500,300,"1,300"
 Vitamin C,Milligrams (mg),mg,90,50,15,120
 Calcium,Milligrams (mg),mg,"1,300",260,700,"1,300"
@@ -32,8 +30,7 @@ Choline,Milligrams (mg),mg,550,150,200,550
 Fat,Grams (g),g,78,30,39,78
 Saturated fat,Grams (g),g,20,N/A,10,20
 Cholesterol,Milligrams (mg),mg,300,N/A,300,300
-"Total
-carbohydrates",Grams (g),g,275,95,150,275
+Total carbohydrates,Grams (g),g,275,95,150,275
 Sodium,Milligrams (mg),mg,"2,300",N/A,"1,500","2,300"
 Dietary Fiber,Grams (g),g,28,N/A,14,28
 Protein,Grams (g),g,50,11,13,71
