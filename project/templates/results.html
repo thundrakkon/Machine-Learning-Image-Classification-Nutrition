@@ -15,34 +15,30 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="icon" type="image/x-icon" href='{{url_for("static", filename = "favicon.ico")}}'>
-    <title>Nutrition Nuts</title>
+    <link rel="icon" type="image/x-icon" href='{{url_for("static", filename = "favicon.ico")}}'><title>Nutrition Nuts</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+    
     <script type="text/javascript">
-        var file_url = '{{ data.file_urls[0]}}'
-        var prediction = '{{ data.prediction[0]}}'
+        var file_url ='{{ data.file_urls[0]}}'
+        var prediction ='{{ data.prediction[0]}}'
+        var prediction_data = '{{ data.prediction_data[0]}}'
     </script>
     <script type="text/javascript" src="{{url_for('static', filename = 'resultsJs.js')}}"></script>
 </head>
 
 <style>
     table {
-        width: 40%;
+        width: 40%;        
         font-family: arial, sans-serif;
         border-collapse: collapse;
     }
-    
-    th,
-    td {
+    th, td {
         padding: 8px;
         text-align: left;
         border-top: 1px solid #dee2e6;
     }
-    
     tbody tr:nth-child(odd) {
         background-color: #f2f2f2;
     }
@@ -64,14 +60,14 @@
 
 
 
-    <div class=row>
+    <div class= row>
         <div class=col-sm-6>
-            <a href="{{ url_for('index') }}">Have another favorite fruit?</a>
-            <p></p>
+            <a href="{{ url_for('index') }}">Have another favorite fruit?</a><p></p>
             {% for file_url in data.file_urls %}
-            <img style="height: 150px" src="{{ file_url }}"> {% endfor %}
+                <img style="height: 150px" src="{{ file_url }}">
+            {% endfor %}
 
-
+        
         </div>
         <div class=col-sm-6 style="overflow-x: auto;">
             <p id=nextToImage>TABLE OF NUTRIONAL FACTS</p>
@@ -233,7 +229,7 @@
         </div>
     </div>
 
-    <div class=r ow>
+    <div class= row>
         <div class=col-sm-6>
             <canvas id="chartOne"></canvas>
         </div>
@@ -245,13 +241,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-    <script type="text/javascript" src="{{url_for('static', filename = 'nutrients.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static', filename = 'results_details.json')}}"></script>
-
+    <!-- <script type="text/javascript" src="{{url_for('static', filename = 'nutrients.js')}}"></script> -->
+    <!-- <script type="text/javascript" src="{{url_for('static', filename = 'results_details.json')}}"></script> -->
+    
 </body>
-
 </html>
