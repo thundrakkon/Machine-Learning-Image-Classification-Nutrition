@@ -375,7 +375,9 @@ def results():
     prediction = session['prediction']
     session.pop('prediction', None)
 
-    return render_template('results.html', file_urls=file_urls, prediction=prediction)
+    data = {'file_urls':file_urls, 'prediction': prediction}
+
+    return render_template('results.html', data=data)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -3,7 +3,7 @@
 <head>
     <!-- <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <title>Nutrition Nuts</title>
+    <link rel="icon" type="image/x-icon" href='{{url_for("static", filename = "favicon.ico")}}'><title>Nutrition Nuts</title>
         {{ dropzone.load() }}
         {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 200px; max-width: 200px;') }}
     
@@ -12,26 +12,6 @@
 </head>
 <body>
 
-    <!-- <form name="inputImage" method="POST" action="#"> -->
-        <!-- <input type="File" accept="image/*" name="imgUpload"> -->
-        
-        <!-- <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;" ></p>
-        <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-        <p><img id="output" width="400" /></p>
-        <input type="submit" value="submit" />
-    </form>
-
-    
-
-<script>
-var loadFile = function(event) {
-	var image = document.getElementById('output');
-	image.src = URL.createObjectURL(event.target.files[0]);
-};
-</script> -->
-
-  
-    <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">Fruits and Veggies are Fruity-licious</span>
     </nav>

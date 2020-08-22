@@ -16,8 +16,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/x-icon" href='{{url_for("static", filename = "favicon.ico")}}'><title>Nutrition Nuts</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script type="text/javascript" src='{{url_for("static", filename = "reultsJs.js")}}'></script>
+    
+    <script type="text/javascript">
+        var file_url ='{{ data.file_urls[0]}}'
+        var prediction ='{{ data.prediction[0]}}'
+    </script>
+    <script type="text/javascript" src="{{url_for('static', filename = 'resultsJs.js')}}"></script>
 </head>
 <body>
 
@@ -27,7 +34,7 @@
 
 
     <div class="jumbotron">
-        <h1 class="display-4">So, you were looking for nutritional information for {{prediction[0]}}</h1>
+        <h1 class="display-4">So, you were looking for nutritional information for {{data.prediction[0]}}</h1>
         <p class="lead">General understanding about nutrients as vitamins and fiber in fruits.</p>
         <hr class="my-4">
         <p>These charts may let you think about what kind of fruit to eat based on your nutritional purpose.</p>
@@ -37,12 +44,11 @@
 
     <div class= row>
         <div class=col-sm-6>
-
+            <a href="{{ url_for('index') }}">Have another favorite fruit?</a><p></p>
             {% for file_url in file_urls %}
-                <img style="height: 150px" src="{{ file_url }}">
-
-                
+                <img style="height: 150px" src="{{ data.file_urls }}">
             {% endfor %}
+            <p id=prediction>{{data.prediction[0]}}</p>
         
         </div>
         <div class=col-sm-6>
