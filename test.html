@@ -6,8 +6,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    table {
+        width: 40%;        
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-top: 1px solid #dee2e6;
+    }
+    tbody tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+</style>
 
 <body>
+    <div class="nutrients">
+        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+    </div>
+    <div style="overflow-x: auto;">
+        <table id="table" border="1">
+            <thread>
+                <tr>
+                    <th id="heading-nutrition" colspan="3">Nutrition Facts</th>
+                </tr>
+                <tr>
+                    <td id="row-serve" colspan="3">Serving Size:</td>
+                </tr>
+                <tr>
+                    <td id="row-cal" colspan="3">Calories:</td>
+                </tr>
+            </thread>
+            <tbody>
+                <tr>
+                    <th id="table-heading">Nutrition</th>
+                    <th id="table-heading">Qnty</th>
+                    <th id="table-heading">% Daily Value</th>
+                </tr>
+                <tr id="row-1">
+                    <td id="table-nut">Nutrition</td>
+                    <td id="table-val">Qnty</td>
+                    <td id="table-dv">% Daily Value</td>
+                </tr>
+                <tr id="row-2">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-3">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-4">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-5">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-6">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-7">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-8">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-9">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-10">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-11">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-12">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-13">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-14">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-15">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-16">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-17">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-18">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-19">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-20">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-21">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-22">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-23">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-24">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-25">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-26">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+                <tr id="row-27">
+                    <td id="table-nut"></td>
+                    <td id="table-val"></td>
+                    <td id="table-dv"></td>
+                </tr>
+            </tbody>
+        <!-- <tr>
+          <td>Nutrient</td> -->
+          <!-- <td rowspan="2">value</td> -->
+          <!-- <td>value</td>
+        </tr>
+        <tr>
+          <td>New</td>
+        </tr> -->
+        </table>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="nutrients.js"></script>
     <script src="results_details.json"></script>
