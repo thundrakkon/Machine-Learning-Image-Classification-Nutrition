@@ -52,11 +52,21 @@ def queryValue(fruitName):
     cur = conn.cursor()
     queryValue = cur.execute(f"SELECT * FROM fruit_nutrients WHERE food_name=?", (fruitName,)).fetchall()
     # print('INSIDE THE FUNTIONC ###############################################')
-    # print(len(queryValue[0]))
+    # for dato in queryValue[0]:
+    #     print(dato)
     # print('INSIDE THE FUNTIONC ###############################################')
-    #The returned value is a tuple
-    return queryValue[0]
+    labels = ["food_name", "food_type", "food_description", "energy", "water", "sugar", "vitamin_C", "calcium", "carbohydrate","protein", "sodium","vitamin_E", "cooper", "iron", "magnesium", "phosphorus", "potassium","zinc","total_fat", "saturated_fat", "fiber_total_dietary"]
+    returned ={}
+    # for i in range(len(queryValue[0])):
+    #     returned.append(f'{queryValue[0][i]}')
 
+    for i in range(len(queryValue[0])):
+        returned[f'{labels[i]}'] = queryValue[0][i]
+    # print('INSIDE THE FUNTIONC ###############################################')
+    # print(returnedDict)
+    return returned
+
+# queryValue('banana')
 
 ###################################################################################################################################################
 ###MODEL PREDICTION################################################################################################################################
@@ -128,30 +138,25 @@ patch_request_class(app)  # set maximum file size, default is 16MB
 
 @app.route("/", methods = ["GET", "POST"])
 def index():
-    # set session for image results
-    if "file_urls" not in session:
-        session['file_urls'] = []
 
-    if "prediction" not in session:
-        session['prediction'] = []
+    sessionArguments = ['file_urls', 'prediction', 'prediction_data']
+    # sessionArguments = [ "file_urls","food_name", "food_type", "food_description", "energy", "water", "sugar", "vitamin_C", "calcium", "carbohydrate","protein", "sodium","vitamin_E", "cooper", "iron", "magnesium", "phosphorus", "potassium","zinc","total_fat", "saturated_fat", "fiber_total_dietary"]
+    
+    
+    for argument in sessionArguments:
+        if argument not in session:
+            session[argument] = []
 
-    if "prediction_data" not in session:
-        session['prediction_data'] = []
-
-
-    # list to hold our uploaded image urls
-    file_urls = session['file_urls']
-    prediction = session['prediction']
-    prediction_data = session['prediction_data']
+    auxContainer = {'file_urls':[], 'prediction':[], 'prediction_data':[]}
+    for key in sessionArguments:
+        auxContainer[key] = session[key]
 
     # handle image upload from Dropzone
     if request.method == "POST":
         file_obj = request.files
         for f in file_obj:
             file = request.files.get(f)
-            # print("file type")
-            # print(type(file))
-
+            # resultContainer = {'file_urls':[], 'prediction':[], 'prediction_data':[]}
             # save the file with to our photos folder
             filename = photos.save(file, name=file.filename)
             # print("RESULT NEW*********************************************")
@@ -162,20 +167,33 @@ def index():
             # print("RESULT NEW*********************************************")
             # print(resultPrediction)
             # print("RESULT NEW*********************************************")
+################################################################################################################################
+            # #Query data for prediction from Final_Fruits_Veggies_NoHeader
+            # predictionData = queryValue(resultPrediction)
 
-            #Query data for prediction from Final_Fruits_Veggies_NoHeader
-            predictionData = queryValue(resultPrediction)
+            # print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            # for key in predictionData.items():
+            #     # session[f'{key[0]}'] = key[1]
+            #     print(key[0], key[1])
 
-            # append image urls
-            file_urls.append(photos.url(filename))
-            prediction.append(resultPrediction)
-            prediction_data.append(predictionData)
+            # # append image urls
+
+            # for key in sessionArguments:
+            #     auxContainer[key].append()
+
+            auxContainer['file_urls'].append(photos.url(filename))
+            auxContainer['prediction'].append(resultPrediction)
+            # auxContainer['prediction_data'].append(predictionData)
 
             # print(file.filename)
         
-        session['file_urls'] = file_urls
-        session['prediction'] = prediction
-        session['prediction_data'] = predictionData
+        session['file_urls'] = auxContainer['file_urls']
+        session['prediction'] = auxContainer['prediction']
+        # session['prediction_data'] = auxContainer['prediction_data']
+
+        # print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        # print(session['prediction_data'][0].keys())
+
         return "uploading..."
 
     # return dropzone template on GET request  
@@ -195,7 +213,8 @@ def results():
     prediction_data = session['prediction_data']
     session.pop('prediction_data', None)
 
-
+    print("##########################################")
+    print(prediction_data)
     data = {'file_urls':file_urls, 'prediction': prediction, 'prediction_data': prediction_data}
 
     return render_template('results.html', data=data)
