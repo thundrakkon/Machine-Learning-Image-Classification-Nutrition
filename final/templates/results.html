@@ -18,7 +18,7 @@
 
 <style>
     table {
-        width: 40%;
+        width: 50%;
         font-family: arial, sans-serif;
         border-collapse: collapse;
     }
@@ -41,17 +41,14 @@
         console.log(url)
         var csv = "../static/Daily-Values.csv"
         console.log(prediction)
-            // d3.select("#selDataset").on("change", function(summaryd) {
-            //   // Weather()
 
-        //   selectedOption = d3.select(this).node().value
-
+        // Load json and csv files
         d3.json(url).then((jsonData) => {
             d3.csv(csv).then((daily) => {
                 console.log(jsonData)
                 console.log(daily)
 
-                // selectedOption = d3.select(this).node().value
+                // Access key value (fruit name) from App
                 text = prediction
                 selectedOption = text.toLowerCase()
                 console.log(selectedOption)
@@ -608,9 +605,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script> -->
-    <!-- <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script type="text/javascript" src="../static/nutrients.js"></script> -->
-    <!-- <script type="text/javascript" src="../results_details.json"></script> -->
 
 </body>
 
