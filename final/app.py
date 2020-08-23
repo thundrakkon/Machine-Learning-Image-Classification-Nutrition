@@ -7,64 +7,64 @@ import os
 ###################################################################################################################################################
 ####DATA BASE######################################################################################################################################
 ###################################################################################################################################################
-import sqlite3
-import csv
+# import sqlite3
+# import csv
 
-conn = sqlite3.connect('fruits.sqlite')
-cur = conn.cursor()
+# conn = sqlite3.connect('fruits.sqlite')
+# cur = conn.cursor()
 
-cur.execute('DROP TABLE IF EXISTS fruit_nutrients')
-cur.execute('''
-CREATE TABLE "fruit_nutrients"(
-    "food_name" TEXT,
-    "food_type" TEXT,
-    "food_description" TEXT,
-    "energy" REAL,
-    "water" REAL,
-    "sugar" REAL,
-    "vitamin_C" REAL,
-    "calcium" REAL,
-    "carbohydrate" REAL,
-    "protein" REAL,
-    "sodium" REAL,
-    "vitamin_E" REAL,
-    "cooper" REAL,
-    "iron" REAL,
-    "magnesium" REAL,
-    "phosphorus" REAL,
-    "potassium" REAL,
-    "zinc" REAL,
-    "total_fat" REAL,
-    "saturated_fat" REAL,
-    "fiber_total_dietary" REAL
-)
-''')
+# cur.execute('DROP TABLE IF EXISTS fruit_nutrients')
+# cur.execute('''
+# CREATE TABLE "fruit_nutrients"(
+#     "food_name" TEXT,
+#     "food_type" TEXT,
+#     "food_description" TEXT,
+#     "energy" REAL,
+#     "water" REAL,
+#     "sugar" REAL,
+#     "vitamin_C" REAL,
+#     "calcium" REAL,
+#     "carbohydrate" REAL,
+#     "protein" REAL,
+#     "sodium" REAL,
+#     "vitamin_E" REAL,
+#     "cooper" REAL,
+#     "iron" REAL,
+#     "magnesium" REAL,
+#     "phosphorus" REAL,
+#     "potassium" REAL,
+#     "zinc" REAL,
+#     "total_fat" REAL,
+#     "saturated_fat" REAL,
+#     "fiber_total_dietary" REAL
+# )
+# ''')
 
-with open("./static/Final_Fruits_Veggies_NoHeader.csv", 'r') as csv_file:
-    for row in csv_file:
-        # print(len(row.split(",")))
-        cur.execute("INSERT INTO fruit_nutrients VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", row.split(","))
-        conn.commit()
-conn.close()
+# with open("./static/Final_Fruits_Veggies_NoHeader.csv", 'r') as csv_file:
+#     for row in csv_file:
+#         # print(len(row.split(",")))
+#         cur.execute("INSERT INTO fruit_nutrients VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", row.split(","))
+#         conn.commit()
+# conn.close()
 
-def queryValue(fruitName):
-    conn = sqlite3.connect('fruits.sqlite')
-    cur = conn.cursor()
-    queryValue = cur.execute(f"SELECT * FROM fruit_nutrients WHERE food_name=?", (fruitName,)).fetchall()
-    # print('INSIDE THE FUNTIONC ###############################################')
-    # for dato in queryValue[0]:
-    #     print(dato)
-    # print('INSIDE THE FUNTIONC ###############################################')
-    labels = ["food_name", "food_type", "food_description", "energy", "water", "sugar", "vitamin_C", "calcium", "carbohydrate","protein", "sodium","vitamin_E", "cooper", "iron", "magnesium", "phosphorus", "potassium","zinc","total_fat", "saturated_fat", "fiber_total_dietary"]
-    returned ={}
-    # for i in range(len(queryValue[0])):
-    #     returned.append(f'{queryValue[0][i]}')
+# def queryValue(fruitName):
+#     conn = sqlite3.connect('fruits.sqlite')
+#     cur = conn.cursor()
+#     queryValue = cur.execute(f"SELECT * FROM fruit_nutrients WHERE food_name=?", (fruitName,)).fetchall()
+#     # print('INSIDE THE FUNTIONC ###############################################')
+#     # for dato in queryValue[0]:
+#     #     print(dato)
+#     # print('INSIDE THE FUNTIONC ###############################################')
+#     labels = ["food_name", "food_type", "food_description", "energy", "water", "sugar", "vitamin_C", "calcium", "carbohydrate","protein", "sodium","vitamin_E", "cooper", "iron", "magnesium", "phosphorus", "potassium","zinc","total_fat", "saturated_fat", "fiber_total_dietary"]
+#     returned ={}
+#     # for i in range(len(queryValue[0])):
+#     #     returned.append(f'{queryValue[0][i]}')
 
-    for i in range(len(queryValue[0])):
-        returned[f'{labels[i]}'] = queryValue[0][i]
-    # print('INSIDE THE FUNTIONC ###############################################')
-    # print(returnedDict)
-    return returned
+#     for i in range(len(queryValue[0])):
+#         returned[f'{labels[i]}'] = queryValue[0][i]
+#     # print('INSIDE THE FUNTIONC ###############################################')
+#     # print(returnedDict)
+#     return returned
 
 # queryValue('banana')
 
