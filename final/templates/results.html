@@ -1,18 +1,3 @@
-<!-- <h1>Hello Results Page!</h1>
-<a href="{{ url_for('index') }}">Have another favorite fruit?</a><p>
-
-
-<ul>
-{% for file_url in file_urls %}
-    <li><img style="height: 150px" src="{{ file_url }}"></li>
-
-    <h1>{{prediction[0]}}</h1>
-{% endfor %}
-</ul>
- -->
-
-<!-- ################################################################################################################## -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -427,17 +412,17 @@
     </nav>
 
 
-    <div class="jumbotron" style="background-image: url(https://media.istockphoto.com/photos/fresh-fruits-and-vegetables-picture-id589415708?k=6&m=589415708&s=612x612&w=0&h=yk6a8hZI3HnGuPgCkJqWjqzmfbGqy9bucx1ZUXkXwA8=); background-size: 100% 100%;">
-        <h1 class="display-4" style="color : white; font-weight: bold;">So, you were looking for nutritional information for {{data.prediction[0]}}</h1>
-        <p class="lead" style="color: aliceblue; font-weight: bolder; font-size: x-large;">General understanding about nutrients as vitamins and fiber in fruits.</p>
+    <div class="jumbotron" style="background-image: url(https://www.pcycnsw.org.au/wp-content/uploads/2020/01/Eating-Healthy-Can-Be-Delicious.jpeg); background-size: 100% 100%;">
+        <h1 class="display-4" style="color: white; font-weight: bolder;">So, were you looking nutritional information about {{data.prediction[0]}} ?</h1>
+        <p class="lead"> </p>
         <hr class="my-4">
-        <p style="color: aliceblue; font-weight: bolder; font-size: x-large;">These charts may let you think about what kind of fruit to eat based on your nutritional purpose.</p>
+        <p style="color: white; font-size: x-large;">General understanding about nutrients as vitamins of your choosen fruit or veggie will let you manage them to healthy purposes in you lifestyle.</p>
     </div>
 
 
 
-    <div class=r ow>
-        <div class=col-sm-6>
+    <div class=row>
+        <div class=col-sm-5 style="left: 125px;">
             <a href="{{ url_for('index') }}">Have another favorite fruit?</a>
             <p></p>
             {% for file_url in data.file_urls %}
@@ -445,8 +430,10 @@
 
 
         </div>
-        <div style="overflow-x: auto;">
-            <p id=nextToImage>TABLE OF NUTRIONAL FACTS</p>
+    </div>
+    <div>
+        <div class = col-sm-5 style="overflow-x: auto; left: 35px;">
+            <p id=nextToImage></p>
             <table id="table" border="1">
                 <thread>
                     <tr>
