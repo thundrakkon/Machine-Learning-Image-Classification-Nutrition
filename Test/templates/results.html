@@ -436,16 +436,23 @@
 
 
 
-    <div class=r ow>
-        <div class=col-sm-6>
+    <div class=row>
+        <div class=col-sm-3>
             <a href="{{ url_for('index') }}">Have another favorite fruit?</a>
             <p></p>
             {% for file_url in data.file_urls %}
             <img style="height: 150px" src="{{ file_url }}"> {% endfor %}
 
-
         </div>
-        <div style="overflow-x: auto;">
+        <div class='col-md-4'>
+            <div class='well'>
+                <h4>Nutrients</h4>
+                <select id='selDataset' onchange='optionChange(this.value)'></select>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class=col-sm-5 style="overflow-x: auto; ">
             <p id=nextToImage>TABLE OF NUTRIONAL FACTS</p>
             <table id="table" border="1">
                 <thread>
@@ -603,17 +610,118 @@
                 </tbody>
             </table>
         </div>
+        <div class="col-sm-8">
+            <div id='bar' style="width:1067px;height:700px;"></div>
+        </div>
+
     </div>
 
-    <div class=r ow>
-        <div class=col-sm-6>
-            <canvas id="chartOne"></canvas>
-        </div>
-        <div class=col-sm-6>
-            <canvas id="chartTwo"></canvas>
-        </div>
-    </div>
+    <script>
+        // bar chart 
+        var fruitsData = '../static/filtered_fruits.csv'
+            // var input = prediction;
+        var input = prediction;
 
+        // console log all the data
+        d3.csv(fruitsData).then(function(data) {
+            console.log(data);
+        });
+
+        // put all nutrient names in the dropdown menu
+        function dropdown() {
+            var dropDownMenu = d3.select('#selDataset');
+            d3.csv(fruitsData).then((data) => {
+                for (var i = 0; i < data.length; i++) {
+                    var nutrient_names = data[i].Nutrient;
+                    dropDownMenu.append('option').text(nutrient_names).property('value', nutrient_names)
+                }
+            })
+        }
+        // run the dropdown function
+        dropdown()
+
+        // BUILD CHART 
+        function buildChart(selected) {
+
+            d3.csv(fruitsData).then(function(data) {
+                var fruits = ['apple', 'banana', 'blueberry', 'fig', 'lemon', 'orange', 'peach', 'persimmon', 'tomato', 'watermelon'];
+
+                var colors = ['mistyrose', 'mistyrose', 'mistyrose', 'mistyrose',
+                    'mistyrose', 'mistyrose', 'mistyrose', 'mistyrose',
+                    'mistyrose', 'mistyrose'
+                ];
+
+                for (var j = 0; j < fruits.length; j++) {
+                    if (input == fruits[j]) {
+                        colors[j] = 'darkred';
+                    }
+                    // console.log(input, colors)
+                }
+
+                for (var i = 0; i < data.length; i++) {
+                    if (selected === data[i].Nutrient) {
+                        // console.log(selected);
+
+                        var yaxis = [data[i].Apple,
+                            data[i].Banana,
+                            data[i].Blueberries,
+                            data[i].Fig,
+                            data[i].Lemon,
+                            data[i].Orange,
+                            data[i].Peach,
+                            data[i].Persimmon_dried,
+                            data[i].Tomatoes,
+                            data[i].Watermelon
+                        ];
+                    }
+                    // console.log(yaxis)
+                }
+                var trace1 = {
+                    x: fruits,
+                    y: yaxis,
+                    marker: {
+                        color: colors
+                    },
+                    type: 'bar',
+                    orientation: 'v'
+                };
+
+                // data array
+                var data = [trace1];
+
+                // layout
+                var layout = {
+                    title: 'Fruit Comparison',
+                    xaxis: {
+                        title: 'Fruits'
+                    },
+                    yaxis: {
+                        title: 'Content'
+                    }
+                };
+
+                // plot chart
+                Plotly.newPlot('bar', data, layout)
+            })
+        }
+
+        buildChart('Energy (kcal)');
+
+
+        // BUILD NEW CHART WITH EACH OPTION CHANGE 
+        function optionChange(newSelection) {
+            if (newSelection !== "") {
+                buildChart(newSelection)
+            } else {
+                var barChart = d3.select('#bar')
+                barChart.html("");
+            }
+        };
+    </script>
+
+
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
