@@ -19,7 +19,7 @@
 
 <style>
     table {
-        width: 50%;
+        width: 70%;
         font-family: arial, sans-serif;
         border-collapse: collapse;
     }
@@ -420,11 +420,12 @@
 
 
     <div class=row>
-        <div class=col-sm-4 style="left: 125px;">
+        <div class=col-md-3 style="left: 100px;">
+
             <a href="{{ url_for('index') }}">Have another favorite fruit?</a>
             <p></p>
             {% for file_url in data.file_urls %}
-            <img style="height: 150px" src="{{ file_url }}"> {% endfor %}
+            <img style="height: 150px; border: 2px solid rgb(17, 105, 9)" src="{{ file_url }}"> {% endfor %}
 
 
         </div>
@@ -439,7 +440,7 @@
     </div>
 
     <div class='row'>
-        <div class=col-sm-4 style="margin-left: 100px;  ">
+        <div class=col-md-3 style="margin-left: 100px;  ">
             <p id=nextToImage></p>
             <table id="table" border="1">
                 <thread>
@@ -598,7 +599,7 @@
             </table>
         </div>
 
-        <div class="col-sm-7">
+        <div class="col-md-8">
             <div id='bar' style="width:1067px;height:700px;"></div>
         </div>
 
@@ -679,7 +680,12 @@
 
                 // layout
                 var layout = {
-                    title: 'Fruit Comparison',
+                    title: '<b>Fruit Comparison</b>',
+                    font: {
+                        family: 'Courier New, monospace',
+                        size: 18,
+                        color: 'rgb(17, 105, 9)'
+                    },
                     xaxis: {
                         title: 'Fruits'
                     },
