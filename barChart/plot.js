@@ -25,7 +25,7 @@ dropdown()
 function buildChart(selected){
     
     d3.csv(fruitsData).then(function(data){
-        var fruits = ['apple', 'banana', 'blueberries', 'fig', 'lemon', 'orange', 'peach', 'persimmon_dried', 'tomatoes', 'watermelon'];
+        var fruits = ['apple', 'banana', 'blueberry', 'fig', 'lemon', 'orange', 'peach', 'persimmon', 'tomatoes', 'watermelon'];
 
         var colors = ['mistyrose', 'mistyrose', 'mistyrose', 'mistyrose', 
                         'mistyrose', 'mistyrose', 'mistyrose', 'mistyrose', 

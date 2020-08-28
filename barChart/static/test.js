@@ -1,6 +1,6 @@
 
 var elementsArray = document.getElementsByClassName('value');
-var input = elementsArray[0];
-console.log(input.innerText);
+var input = elementsArray[0].innerText;
+console.log(input);
 
 
