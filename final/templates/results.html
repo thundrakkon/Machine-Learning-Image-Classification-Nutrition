@@ -410,7 +410,7 @@
     </nav>
 
 
-    <div class="jumbotron" style="background-color: #e8d0cf;padding-top: 20px; padding-bottom: 20px;">
+    <div class="jumbotron" style="background-color: #e8d0cf;padding-top: 20px; padding-bottom: 20px; ">
         <h1 class="display-4" style="color: black; font-weight: bolder; font-size: x-large">So, were you looking nutritional information about {{data.prediction[0]}} ?</h1>
         <p class="lead"> </p>
         <hr class="my-4">
@@ -420,27 +420,35 @@
 
 
     <div class=row>
-        <div class=col-md-3 style="left: 100px;">
 
-            <a href="{{ url_for('index') }}">Have another favorite fruit?</a>
-            <p></p>
-            {% for file_url in data.file_urls %}
-            <img style="height: 150px; border: 2px solid rgb(17, 105, 9)" src="{{ file_url }}"> {% endfor %}
+        <div class='col-md-2' style="margin-left: 50px;">
+            <div class='row' style="left: 0px;">
+
+                <a href="{{ url_for('index') }}">Have another favorite fruit?</a>
+                <p></p>
+                {% for file_url in data.file_urls %}
+                <img style="height: 150px; border: 2px solid rgb(17, 105, 9)" src="{{ file_url }}"> {% endfor %}
 
 
-        </div>
-
-        <div class='col-md-4'>
-            <div class='well'>
-                <h4>Nutrients</h4>
-                <select id='selDataset' onchange='optionChange(this.value)'></select>
+            </div>
+            <div class='row' style="padding-top: 50px;">
+                <div class='well'>
+                    <h4>Nutrients</h4>
+                    <select id='selDataset' onchange='optionChange(this.value)'></select>
+                </div>
             </div>
         </div>
 
-    </div>
+        <div class="col-md-6">
+            <div id='bar' style="width:900px;height:700px;"></div>
+        </div>
 
-    <div class='row'>
-        <div class=col-md-3 style="margin-left: 100px;  ">
+
+        <!-- </div> -->
+
+        <!-- <div class='row'> -->
+
+        <div class=col-md-3 style="margin-left: 0px;  ">
             <p id=nextToImage></p>
             <table id="table" border="1">
                 <thread>
@@ -599,9 +607,7 @@
             </table>
         </div>
 
-        <div class="col-md-8">
-            <div id='bar' style="width:1067px;height:700px;"></div>
-        </div>
+
 
     </div>
 
