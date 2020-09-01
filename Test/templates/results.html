@@ -489,7 +489,7 @@
                 </button>
                 <p></p>
                 {% for file_url in data.file_urls %}
-                <img style="height: 150px; border: 2px solid rgb(17, 105, 9)" src="{{ file_url }}"> {% endfor %}
+                <img style="max-height: 150px; max-width: 250px; border: 2px solid rgb(17, 105, 9)" src="{{ file_url }}"> {% endfor %}
 
 
             </div>
@@ -501,8 +501,8 @@
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div id='bar' style="width:900px;height:700px;"></div>
+        <div class="col-md-6" style="margin-right: 50px;">
+            <div id='bar' style="width:100%;height:70%;"></div>
         </div>
 
 
