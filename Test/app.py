@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect, url_for, request, render_template, session, json
+from flask import Flask, jsonify, redirect, url_for, request, render_template, session
 from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
@@ -7,174 +7,6 @@ import os
 ###################################################################################################################################################
 ####DATA BASE######################################################################################################################################
 ###################################################################################################################################################
-
-# import sqlite3
-# import time
-# from numpy import genfromtxt
-# # from sqlalchemy import Column, Integer, Float, String
-
-
-# def dict_factory(cursor, row):
-#     d = {}
-#     for idx, col in enumerate(cursor.description):
-#         d[col[0]] = row[idx]
-#     return d
-
-
-# def Create_DB(db):      
-#     #Create DB and format it as needed
-#     with sqlite3.connect(db) as conn:
-#         conn.row_factory = dict_factory
-#         conn.text_factory = str
-
-#         cursor = conn.cursor()
-
-#         cursor.execute("CREATE TABLE [FruitNutrients] ([id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, [name] STRING, [calcium] FLOAT, [carbohydrate] FLOAT, [cholesterol] FLOAT, [cooper] FLOAT, [energy] FLOAT, [saturated] FLOAT, [fiber_total] FLOAT, [glucose] FLOAT, [iron] FLOAT, [magnesium] FLOAT, [phosphorum] FLOAT, [potassium] FLOAT, [protein] FLOAT, [sodium] FLOAT, [starch] FLOAT, [sucrose] FLOAT, [total_fat] FLOAT, [vitamin_c] FLOAT, [vitamin_d] FLOAT, [vitamin_e] FLOAT, [water] FLOAT, [zinc] FLOAT);")
-
-
-# def Add_Record(db, data):
-#     #Insert record into table
-#     with sqlite3.connect(db) as conn:
-#         conn.row_factory = dict_factory
-#         conn.text_factory = str
-#         cursor = conn.cursor()
-#         cursor.execute("INSERT INTO fruits({cols}) VALUES({vals});".format(cols = str(data.keys()), vals=str([data[i] for i in data])  ))
-                    
-
-
-# def Load_Data(file_name):
-#     data = genfromtxt(file_name, delimiter=',', skip_header=1, converters={0: lambda s: str(s)})
-#     return data.tolist()
-
-
-# db = 'fruits.db' #Database filename 
-# file_name = "fruits.csv" #sample CSV file used:  http://www.google.com/finance/historical?q=NYSE%3AT&ei=W4ikVam8LYWjmAGjhoHACw&output=csv
-
-# data = Load_Data(file_name) #Get data from CSV
-
-# Create_DB(db) #Create DB
-
-# #For every record, format and insert to table
-# for i in data:
-#     record = {
-#             'name' : i[0],
-#             'calcium' : i[1],
-#             'carbohydrate' : i[2],
-#             'copper' : i[3],
-#             'energy' : i[4],
-#             'saturated_fat' : i[5],
-#             'fiber_total' : i[6],
-#             'glucose' : i[7],
-#             'iron' : i[8],
-#             'magnesium' : i[9],
-#             'phosporum' : i[10],
-#             'potassium' : i[11],
-#             'protein' : i[12],
-#             'sodium' : i[13],
-#             'starch' : i[14],
-#             'sucrose' : i[15],
-#             'total_fat' : i[16],
-#             'vitamin_c' : i[17],
-#             'vitamin_d' : i[18],
-#             'vitamin_e' : i[19],
-#             'water' : i[20],
-#             'zinc' : i[21]
-#         }
-#     Add_Record(db, record)
-##################################
-
-# #########################################################
-# from numpy import genfromtxt
-# from sqlalchemy import Column, Integer, Float, Date, String
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import sessionmaker, Session
-# from flask_sqlalchemy import SQLAlchemy
-
-# def Load_Data(file_name):
-#     data = genfromtxt(file_name, delimiter=',', skip_header=1, converters={0: lambda s: str(s)})
-#     return data.tolist()
-
-# Base = declarative_base()
-
-# class Fruits(Base):
-#     #Tell SQLAlchemy what the table name is and if there's any table-specific arguments it should know about
-#     __tablename__ = 'fruits'
-#     __table_args__ = {'sqlite_autoincrement': True}
-#     #tell SQLAlchemy the name of column and its attributes:
-#     id = Column(Integer, primary_key=True, nullable=False) 
-#     name = Column(String)
-#     calcium = Column(Float)
-#     carbohydrate = Column(Float)
-#     copper = Column(Float)
-#     energy = Column(Float)
-#     saturated_fat = Column(Float)
-#     fiber_total = Column(Float)
-#     glucose = Column(Float)
-#     iron = Column(Float)
-#     magnesium = Column(Float)
-#     phosphorum = Column(Float)
-#     potassium = Column(Float)
-#     protein = Column(Float)
-#     sodium = Column(Float)
-#     starch = Column(Float)
-#     sucrose = Column(Float)
-#     total_fat = Column(Float)
-#     vitamin_c = Column(Float)
-#     vitamin_d = Column(Float)
-#     vitamin_e = Column(Float)
-#     water = Column(Float)
-#     zinc = Column(Float)
-    
-# #Create the database
-# engine = create_engine('sqlite:///fruits.db')
-# Base.metadata.create_all(engine)
-
-# #Create the session
-# sess = sessionmaker()
-# sess.configure(bind=engine)
-# s = Session()
-
-# file_name = "fruits.csv" 
-# data = Load_Data(file_name) 
-
-
-# for i in data:
-#     record = Fruits(**{
-#         'name' : i[0],
-#         'calcium' : i[1],
-#         'carbohydrate' : i[2],
-#         'copper' : i[3],
-#         'energy' : i[4],
-#         'saturated_fat' : i[5],
-#         'fiber_total' : i[6],
-#         'glucose' : i[7],
-#         'iron' : i[8],
-#         'magnesium' : i[9],
-#         'phosphorum' : i[10],
-#         'potassium' : i[11],
-#         'protein' : i[12],
-#         'sodium' : i[13],
-#         'starch' : i[14],
-#         'sucrose' : i[15],
-#         'total_fat' : i[16],
-#         'vitamin_c' : i[17],
-#         'vitamin_d' : i[18],
-#         'vitamin_e' : i[19],
-#         'water' : i[20],
-#         'zinc' : i[21]
-#     })
-# s.add(record) #Add all the records
-
-# s.commit() #Attempt to commit all the records
-
-# # s.close() #Close the connection
-
-# # sessionQuery = Session()
-# # queryOne = sessionQuery.query(fruits.name).first()
-# # print(queryOne)
-    
-# ####&%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*******************************************
 # import sqlite3
 # import csv
 
@@ -184,70 +16,57 @@ import os
 # cur.execute('DROP TABLE IF EXISTS fruit_nutrients')
 # cur.execute('''
 # CREATE TABLE "fruit_nutrients"(
-#     "name" TEXT,
+#     "food_name" TEXT,
+#     "food_type" TEXT,
+#     "food_description" TEXT,
+#     "energy" REAL,
+#     "water" REAL,
+#     "sugar" REAL,
+#     "vitamin_C" REAL,
 #     "calcium" REAL,
 #     "carbohydrate" REAL,
-#     "copper" REAL,
-#     "energy" REAL,
-#     "saturated_fat" REAL,
-#     "fiber_total" REAL,
-#     "glucose" REAL,
-#     "iron" REAL,
-#     "magnesium" REAL,
-#     "phosphorum" REAL,
-#     "potassium" REAL,
 #     "protein" REAL,
 #     "sodium" REAL,
-#     "starch" REAL,
-#     "sucrose" REAL,
+#     "vitamin_E" REAL,
+#     "cooper" REAL,
+#     "iron" REAL,
+#     "magnesium" REAL,
+#     "phosphorus" REAL,
+#     "potassium" REAL,
+#     "zinc" REAL,
 #     "total_fat" REAL,
-#     "vitamin_c" REAL,
-#     "vitamin_d" REAL,
-#     "vitamin_e" REAL,
-#     "water" REAL,
-#     "zinc" REAL
+#     "saturated_fat" REAL,
+#     "fiber_total_dietary" REAL
 # )
 # ''')
 
-# with open("fruits2.csv", 'r') as csv_file:
+# with open("./static/Final_Fruits_Veggies_NoHeader.csv", 'r') as csv_file:
 #     for row in csv_file:
-#         print(len(row.split(",")))
-#         cur.execute("INSERT INTO fruit_nutrients VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", row.split(","))
+#         # print(len(row.split(",")))
+#         cur.execute("INSERT INTO fruit_nutrients VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", row.split(","))
 #         conn.commit()
 # conn.close()
 
+# def queryValue(fruitName):
+#     conn = sqlite3.connect('fruits.sqlite')
+#     cur = conn.cursor()
+#     queryValue = cur.execute(f"SELECT * FROM fruit_nutrients WHERE food_name=?", (fruitName,)).fetchall()
+#     # print('INSIDE THE FUNTIONC ###############################################')
+#     # for dato in queryValue[0]:
+#     #     print(dato)
+#     # print('INSIDE THE FUNTIONC ###############################################')
+#     labels = ["food_name", "food_type", "food_description", "energy", "water", "sugar", "vitamin_C", "calcium", "carbohydrate","protein", "sodium","vitamin_E", "cooper", "iron", "magnesium", "phosphorus", "potassium","zinc","total_fat", "saturated_fat", "fiber_total_dietary"]
+#     returned ={}
+#     # for i in range(len(queryValue[0])):
+#     #     returned.append(f'{queryValue[0][i]}')
 
-###%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*********************************************
+#     for i in range(len(queryValue[0])):
+#         returned[f'{labels[i]}'] = queryValue[0][i]
+#     # print('INSIDE THE FUNTIONC ###############################################')
+#     # print(returnedDict)
+#     return returned
 
-    # csv_reader = csv.reader(csv_file, delimiter=',')
-    # for i in csv_reader:
-    #     print(i),
-    #     name = i[0],
-    #     calcium = float(i[1]),
-    #     carbohydrate = float(i[2]),
-    #     copper =  float(i[3]),
-    #     energy = float(i[4]),
-    #     saturated_fat = float(i[5]),
-    #     fiber_total = float(i[6]),
-    #     glucose = float(i[7]),
-    #     iron = float(i[8]),
-    #     magnesium = float(i[9]),
-    #     phosphorum = float(i[10]),
-    #     potassium = float(i[11]),
-    #     protein = float(i[12]),
-    #     sodium = float(i[13]),
-    #     starch = float(i[14]),
-    #     sucrose = float(i[15]),
-    #     total_fat = float(i[16]),
-    #     vitamin_c = float(i[17]),
-    #     vitamin_d = float(i[18]),
-    #     vitamin_e = float(i[19]),
-    #     water = float(i[20]),
-    #     zinc = float(i[21])
-        #  cur.execute('''INSERT INTO fruit_nutrients(name,calcium,carbohydrate,copper,energy,saturated_fat,fiber_total,glucose,iron,magnesium,phosphorum,potassium,protein,sodium,starch,sucrose,total_fat,vitamin_c,vitamin_d,vitamin_e,water,zinc)
-        # VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',(name,calcium,carbohydrate,copper,energy,saturated_fat,fiber_total,glucose,iron,magnesium,phosphorum,potassium,protein,sodium,starch,sucrose,total_fat,vitamin_c,vitamin_d,vitamin_e,water,zinc))
-        # conn.commit()
-
+# queryValue('banana')
 
 ###################################################################################################################################################
 ###MODEL PREDICTION################################################################################################################################
@@ -289,6 +108,8 @@ def classify(file_path):
     sign = classes[predictions]
     return sign
 
+
+
 ###################################################################################################################################################
 ###FLASK APP#######################################################################################################################################
 ###################################################################################################################################################
@@ -317,26 +138,25 @@ patch_request_class(app)  # set maximum file size, default is 16MB
 
 @app.route("/", methods = ["GET", "POST"])
 def index():
-    # set session for image results
-    if "file_urls" not in session:
-        session['file_urls'] = []
 
-    if "prediction" not in session:
-        session['prediction'] = []
+    sessionArguments = ['file_urls', 'prediction', 'prediction_data']
+    # sessionArguments = [ "file_urls","food_name", "food_type", "food_description", "energy", "water", "sugar", "vitamin_C", "calcium", "carbohydrate","protein", "sodium","vitamin_E", "cooper", "iron", "magnesium", "phosphorus", "potassium","zinc","total_fat", "saturated_fat", "fiber_total_dietary"]
+    
+    
+    for argument in sessionArguments:
+        if argument not in session:
+            session[argument] = []
 
-
-    # list to hold our uploaded image urls
-    file_urls = session['file_urls']
-    prediction = session['prediction']
+    auxContainer = {'file_urls':[], 'prediction':[], 'prediction_data':[]}
+    for key in sessionArguments:
+        auxContainer[key] = session[key]
 
     # handle image upload from Dropzone
     if request.method == "POST":
         file_obj = request.files
         for f in file_obj:
             file = request.files.get(f)
-            print("file type")
-            print(type(file))
-
+            # resultContainer = {'file_urls':[], 'prediction':[], 'prediction_data':[]}
             # save the file with to our photos folder
             filename = photos.save(file, name=file.filename)
             # print("RESULT NEW*********************************************")
@@ -347,15 +167,33 @@ def index():
             # print("RESULT NEW*********************************************")
             # print(resultPrediction)
             # print("RESULT NEW*********************************************")
+################################################################################################################################
+            # #Query data for prediction from Final_Fruits_Veggies_NoHeader
+            # predictionData = queryValue(resultPrediction)
 
+            # print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            # for key in predictionData.items():
+            #     # session[f'{key[0]}'] = key[1]
+            #     print(key[0], key[1])
 
-            # append image urls
-            file_urls.append(photos.url(filename))
-            prediction.append(resultPrediction)
+            # # append image urls
+
+            # for key in sessionArguments:
+            #     auxContainer[key].append()
+
+            auxContainer['file_urls'].append(photos.url(filename))
+            auxContainer['prediction'].append(resultPrediction)
+            # auxContainer['prediction_data'].append(predictionData)
+
             # print(file.filename)
         
-        session['file_urls'] = file_urls
-        session['prediction'] = prediction
+        session['file_urls'] = auxContainer['file_urls']
+        session['prediction'] = auxContainer['prediction']
+        # session['prediction_data'] = auxContainer['prediction_data']
+
+        # print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        # print(session['prediction_data'][0].keys())
+
         return "uploading..."
 
     # return dropzone template on GET request  
@@ -372,17 +210,19 @@ def results():
     session.pop('file_urls', None)
     prediction = session['prediction']
     session.pop('prediction', None)
+    prediction_data = session['prediction_data']
+    session.pop('prediction_data', None)
 
-    data = {'file_urls':file_urls, 'prediction': prediction}
+    print("##########################################")
+    print(prediction_data)
+    data = {'file_urls':file_urls, 'prediction': prediction, 'prediction_data': prediction_data}
 
     return render_template('results.html', data=data)
 
-@app.route('/json')
-def showjson():
-    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-    json_url = os.path.join(SITE_ROOT, "static", "results_details.json")
-    data = json.load(open(json_url))
-    return jsonify(data)
+@app.route('/code')
+def code():
+    
+    return render_template('code.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

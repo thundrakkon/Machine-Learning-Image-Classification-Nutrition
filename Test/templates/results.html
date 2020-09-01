@@ -1,18 +1,3 @@
-<!-- <h1>Hello Results Page!</h1>
-<a href="{{ url_for('index') }}">Have another favorite fruit?</a><p>
-
-
-<ul>
-{% for file_url in file_urls %}
-    <li><img style="height: 150px" src="{{ file_url }}"></li>
-
-    <h1>{{prediction[0]}}</h1>
-{% endfor %}
-</ul>
- -->
-
-<!-- ################################################################################################################## -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,12 +13,13 @@
     </script>
     <script type="text/javascript" src="./static/resultsJs.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script type="text/javascript" src="./static/nutrients.js"></script>
+    <!-- <script type="text/javascript" src="./static/nutrients.js"></script> -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <style>
     table {
-        width: 40%;
+        width: 70%;
         font-family: arial, sans-serif;
         border-collapse: collapse;
     }
@@ -48,6 +34,67 @@
     tbody tr:nth-child(odd) {
         background-color: #f2f2f2;
     }
+
+    .glow-on-hover {
+        width: 220px;
+        height: 50px;
+        border: none;
+        outline: none;
+        color: #fff;
+        background:#fff;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .glow-on-hover:before {
+        content: '';
+        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        position: absolute;
+        top: -2px;
+        left:-2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing 20s linear infinite;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        border-radius: 10px;
+    }
+
+    .glow-on-hover:active {
+        color: #fff
+    }
+
+    .glow-on-hover:active:after {
+        background: transparent;
+    }
+
+    .glow-on-hover:hover:before {
+        opacity: 1;
+    }
+
+    .glow-on-hover:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+    }
+
+    @keyframes glowing {
+        0% { background-position: 0 0; }
+        50% { background-position: 400% 0; }
+        100% { background-position: 0 0; }
+    }
 </style>
 
 <body>
@@ -55,25 +102,22 @@
         var url = "../static/results_details.json"
         console.log(url)
         var csv = "../static/Daily-Values.csv"
-        console.log(data.prediction[0])
-            // d3.select("#selDataset").on("change", function(summaryd) {
-            //   // Weather()
+        console.log(prediction)
 
-        //   selectedOption = d3.select(this).node().value
-
+        // Load json and csv files
         d3.json(url).then((jsonData) => {
             d3.csv(csv).then((daily) => {
-                console.log(jsonData)
-                console.log(daily)
+                // console.log(jsonData)
+                // console.log(daily)
 
-                // selectedOption = d3.select(this).node().value
+                // Access key value (fruit name) from App
                 text = prediction
                 selectedOption = text.toLowerCase()
-                console.log(selectedOption)
+                    // console.log(selectedOption)
 
                 // Filter fruit from jsonData
                 summary = jsonData.filter(d => d.description.toLowerCase() == selectedOption)
-                console.log("summary", summary)
+                    // console.log("summary", summary)
 
                 // Portions Data
                 fruitDesc = []
@@ -89,15 +133,15 @@
                         fruitWeight = summary.map(row => row.foodPortions[0].gramWeight)
                     }
                 }
-                console.log(fruitDesc)
-                console.log(fruitWeight)
+                // console.log(fruitDesc)
+                // console.log(fruitWeight)
 
                 // Base value of 100 g that the nutrition information uses
                 var baseWeight = 100
 
                 // Calculate the factor based off the serving size and base value
                 var fruitFactor = fruitWeight / baseWeight
-                console.log(fruitFactor)
+                    // console.log(fruitFactor)
 
                 // Fruit name
                 var fruitName = summary.map(row => row.description)
@@ -427,33 +471,47 @@
     </nav>
 
 
-    <div class="jumbotron">
-        <h1 class="display-4">So, you were looking for nutritional information for {{data.prediction[0]}}</h1>
-        <p class="lead">General understanding about nutrients as vitamins and fiber in fruits.</p>
+    <div class="jumbotron" style="background-color: #e8d0cf;padding-top: 20px; padding-bottom: 20px; ">
+        <h1 class="display-4" style="color: black; font-weight: bolder; font-size: x-large">So, were you looking nutritional information about {{data.prediction[0]}} ?</h1>
+        <p class="lead"> </p>
         <hr class="my-4">
-        <p>These charts may let you think about what kind of fruit to eat based on your nutritional purpose.</p>
+        <p style="color:black; font-size: large;">General understanding about nutrients as vitamins of your choosen fruit or veggie will let you manage them to healthy purposes in you lifestyle.</p>
     </div>
 
 
 
     <div class=row>
-        <div class=col-sm-3>
-            <a href="{{ url_for('index') }}">Have another favorite fruit?</a>
-            <p></p>
-            {% for file_url in data.file_urls %}
-            <img style="height: 150px" src="{{ file_url }}"> {% endfor %}
 
-        </div>
-        <div class='col-md-4'>
-            <div class='well'>
-                <h4>Nutrients</h4>
-                <select id='selDataset' onchange='optionChange(this.value)'></select>
+        <div class='col-md-2' style="margin-left: 50px;">
+            <div class='row' style="left: 0px;">
+                <button class="glow-on-hover" type="button">
+                    <a href="{{ url_for('index') }}" style="color:rgb(17, 105, 9); text-decoration: none; font-weight: bold;">Have another favorite fruit?</a>
+                </button>
+                <p></p>
+                {% for file_url in data.file_urls %}
+                <img style="height: 150px; border: 2px solid rgb(17, 105, 9)" src="{{ file_url }}"> {% endfor %}
+
+
+            </div>
+            <div class='row' style="padding-top: 50px;">
+                <div class='well'>
+                    <h4>Nutrients</h4>
+                    <select id='selDataset' onchange='optionChange(this.value)'></select>
+                </div>
             </div>
         </div>
-    </div>
-    <div class='row'>
-        <div class=col-sm-5 style="overflow-x: auto; ">
-            <p id=nextToImage>TABLE OF NUTRIONAL FACTS</p>
+
+        <div class="col-md-6">
+            <div id='bar' style="width:900px;height:700px;"></div>
+        </div>
+
+
+        <!-- </div> -->
+
+        <!-- <div class='row'> -->
+
+        <div class=col-md-3 style="margin-left: 0px;  ">
+            <p id=nextToImage></p>
             <table id="table" border="1">
                 <thread>
                     <tr>
@@ -610,9 +668,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-sm-8">
-            <div id='bar' style="width:1067px;height:700px;"></div>
-        </div>
+
+
 
     </div>
 
@@ -691,7 +748,12 @@
 
                 // layout
                 var layout = {
-                    title: 'Fruit Comparison',
+                    title: '<b>Fruit Comparison</b>',
+                    font: {
+                        family: 'Courier New, monospace',
+                        size: 18,
+                        color: 'rgb(17, 105, 9)'
+                    },
                     xaxis: {
                         title: 'Fruits'
                     },
@@ -719,8 +781,6 @@
         };
     </script>
 
-
-
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -729,9 +789,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script> -->
-    <!-- <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script type="text/javascript" src="../static/nutrients.js"></script> -->
-    <!-- <script type="text/javascript" src="../results_details.json"></script> -->
 
 </body>
 

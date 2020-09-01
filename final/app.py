@@ -219,5 +219,10 @@ def results():
 
     return render_template('results.html', data=data)
 
+@app.route('/code')
+def code():
+    
+    return render_template('code.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
